@@ -1,4 +1,5 @@
-import LocalFile from './localFile'
+const LocalFile = require('./localFile')
+const RemoteFile = require('./remoteFile')
 
 function _faiOffset(idx, pos) {
   return (
@@ -9,17 +10,21 @@ function _faiOffset(idx, pos) {
 }
 
 class IndexedFasta {
-  constructor({ fasta, fai, path, faiPath, chunkSizeLimit = 1000000 }) {
+  constructor({ fasta, fai, path, faiPath, url, faiUrl, chunkSizeLimit = 1000000 }) {
     if (fasta) {
       this.fasta = fasta
     } else if (path) {
       this.fasta = new LocalFile(path)
+    } else if (url) {
+      this.fasta = new RemoteFile(url)
     }
 
     if (fai) {
       this.fai = fai
     } else if (faiPath) {
       this.fai = new LocalFile(faiPath)
+    } else if (faiUrl) {
+      this.fai = new RemoteFile(faiUrl)
     } else if (path) {
       this.fai = new LocalFile(`${path}.fai`)
     }

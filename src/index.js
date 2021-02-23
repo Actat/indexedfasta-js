@@ -1,6 +1,7 @@
-import LocalFile from './localFile'
-import BgzipIndexedFasta from './bgzipIndexedFasta'
-import IndexedFasta from './indexedFasta'
+const RemoteFile = require('./remoteFile')
+const LocalFile = require('./localFile')
+const BgzipIndexedFasta = require('./bgzipIndexedFasta')
+const IndexedFasta = require('./indexedFasta')
 
 function parseSmallFasta(text) {
   return text
@@ -45,4 +46,4 @@ class FetchableSmallFasta {
   }
 }
 
-export { parseSmallFasta, FetchableSmallFasta, IndexedFasta, BgzipIndexedFasta }
+module.exports = { parseSmallFasta: parseSmallFasta, FetchableSmallFasta: FetchableSmallFasta, IndexedFasta: IndexedFasta, BgzipIndexedFasta: BgzipIndexedFasta }

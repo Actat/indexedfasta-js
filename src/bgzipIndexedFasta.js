@@ -1,5 +1,5 @@
-import { BgzfFilehandle } from '@gmod/bgzf-filehandle'
-import IndexedFasta from './indexedFasta'
+const BgzfFilehandle = require('@gmod/bgzf-filehandle')
+const IndexedFasta = require('./indexedFasta')
 
 class BgzipIndexedFasta extends IndexedFasta {
   constructor({ fasta, path, fai, faiPath, gzi, gziPath, chunkSizeLimit }) {
